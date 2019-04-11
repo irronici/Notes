@@ -1,4 +1,2 @@
-# Notes
-Learning notes
+# Initial page
 
-Just for test.
