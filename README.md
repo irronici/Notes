@@ -1,5 +1,5 @@
 ---
-description: Just foe test
+description: Just for test
 ---
 
 # OS - NJU
