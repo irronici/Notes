@@ -65,9 +65,15 @@ DROP TABLE <基表名>;
   
     + 查询条件，自然连接
   
+    + 不可以在Where子句中直接使用统计函数
+  
+      <img src="C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20200102151542273.png" alt="image-20200102151542273" style="zoom:50%;" />
+  
   + 常用谓词
   
     <img src="C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20191227193346581.png" alt="image-20191227193346581" style="zoom:60%;" />
+  
+    + Between A and B，也包括A，B 
   
     + like谓词：column [**NOT**] **LIKE** val1 [ **ESCAPE** val2 ]
   
@@ -128,6 +134,7 @@ DROP TABLE <基表名>;
   + like通配
   + 自连接要记得换名
   + **写完select子句以后记得检查group by里的属性在不在select里！**
+  + 有自连接的时候看看要不要加 distinct
   
 + select语句间的运算
 
@@ -140,8 +147,13 @@ DROP TABLE <基表名>;
   + ALL表示不去除冗余重复，**默认去除冗余重复**
 
 + 统计
-  + where字句中不能用统计函数（max(), count()等）
-
+  
++ **where、Group By（having可以）子句中不能用统计函数**（max(), count()等）
+  
+  + 统计查询举例:
+  
+    <img src="C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20200102152039180.png" alt="image-20200102152039180" style="zoom: 60%;" />
+  
 + 分类
   + 分组查询子句：**GROUP BY colname { , colname ... }**
     + 根据colname将满足WHERE子句的元组划分成不同的集合
@@ -149,7 +161,7 @@ DROP TABLE <基表名>;
     + **注：如果要让select能使用这些属性，必须在group by子句中也把这些属性列出来，详见ppt database_03_2 p103**
   + 分组查询子句：**HAVING group_condition**
     + 是在Group By**执行后**进行
-    + group_condition通常作用于**某统计结果**
+    + Having 的 group_condition通常作用于**某统计结果**
 + 映像语句的处理顺序
   + 合并FROM子句中的表
   + 根据WHERE子句中的条件进行元组选择
